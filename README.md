@@ -1,68 +1,49 @@
-
 # Network Security Logger
 
-A Python-based network security tool that captures and analyzes network traffic, detects suspicious patterns, and exports logs in JSON format. This project is ideal for learning and showcasing skills in network monitoring and security analysis.
+A Python tool that monitors network traffic in real time, detects suspicious patterns (e.g., plain-text occurrences of "password", "credit card", etc.), logs information, and exports logs to JSON for analysis.
 
 ## Features
 
-- Logs system and network information.
-- Monitors live network traffic using the `pyshark` library.
-- Detects suspicious patterns in HTTP packets (e.g., `password`, `credit card`, etc.).
-- Exports logs as a structured JSON file for further analysis.
+- Captures live network packets using PyShark (built on Wireshark).
+- Logs system details (hostname, local IP).
+- Alerts when suspicious patterns are detected in HTTP payloads.
+- Exports captured log events to structured JSON for post-analysis.
 
-## Prerequisites
+## Getting Started
+
+### Prerequisites
 
 - Python 3.8 or higher
-- Wireshark installed
-- Required Python libraries:
-  - `pyshark`
-  - `json`
+- Wireshark installed with `tshark` accessible
+- Python library: `pyshark`
 
-### Install Dependencies
-Run the following command to install the required libraries:
-```bash
-pip install pyshark
-```
+### Installation
 
-## Usage
+Clone the repository and install dependencies:
 
-1. Clone the repository:
 ```bash
 git clone https://github.com/Zalay21/Network-Security-Logger.git
 cd Network-Security-Logger
+pip install pyshark
 ```
 
-2. Run the script:
+### Usage
+
+1. Run the script:
+
 ```bash
-python network_security_logger.py
+python network_monitor.py
 ```
 
-3. Follow the prompts:
-   - **Enter network interface**: Specify the network interface to monitor (e.g., `eth0`, `wlan0`).
-   - **Enter filename to export logs**: Provide the filename (e.g., `output.json`).
+2. When prompted, enter the network interface to monitor (e.g., `eth0`, `wlan0`).
 
-## Example Workflow
+3. When prompted, specify a filename to export the logs as JSON (e.g., `output.json`).
 
-### Input:
-```bash
-Enter network interface to monitor (e.g., 'eth0', 'wlan0'): wlan0
-Enter filename to export logs as JSON (e.g., 'output.json'): logs.json
-```
-
-### Output:
-- The logs are saved in a file named `logs.json` with structured JSON data capturing network traffic and any suspicious patterns detected.
+The tool will capture a limited number of packets (defined in the script), log system information, and record suspicious patterns to `network_security_logger.log`. After capture, logs are exported to the specified JSON file.
 
 ## Future Enhancements
 
-- Add support for monitoring other protocols (e.g., FTP, SSH, DNS).
-- Include real-time alerts for critical patterns using notifications or emails.
-- Integrate with databases for long-term log storage and analysis.
-- Add an interactive GUI for non-technical users.
-
-## Contribution Guidelines
-
-Feel free to fork the repository and submit pull requests for any improvements or new features. Ensure that your contributions are well-documented and adhere to the project coding style.
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for more details.
+- Support additional protocols (FTP, SSH, DNS, etc.).
+- Real-time alerts via email or messaging services.
+- Persist logs to a database for long-term analysis.
+- Interactive GUI for non-technical users.
