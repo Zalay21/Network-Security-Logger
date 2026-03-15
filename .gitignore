@@ -1,0 +1,13 @@
+# Log files generated at runtime
+*.log
+*.json
+!package.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# OS
+.DS_Store
+Thumbs.db
